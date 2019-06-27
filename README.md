@@ -17,3 +17,5 @@ volumes: # Optional, same as docker volume create
 
 networks: # Optional, same as docker network create
 ```
+
+Shoutout to Bret Fisher! This was directly taken from his GitHub repo on Docker which can be found [here](https://github.com/BretFisher/udemy-docker-mastery)
