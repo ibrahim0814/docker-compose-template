@@ -1,0 +1,18 @@
+#this is an example where we build an image from another Dockerfile (specially named nginx.Dockerfile) within our compose document
+
+version: '3'
+
+services:
+  proxy:
+    build:
+      #location is the current directory
+      context: .
+      #this is an actual file that would be in this directory (it's no here -- don't try to look for it)
+      dockerfile: nginx.Dockerfile
+    ports:
+      - '80:80'
+  web:
+    image: httpd
+    #add data into a folder called html in the current directory
+    volumes:
+      - ./html:/usr/local/apache2/htdocs/
