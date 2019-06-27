@@ -1,0 +1,32 @@
+#this is an example where we integrate drupal and postgres services
+
+version: '3'
+services:  
+  drupal: 
+    image: drupal
+    ports: 
+      - 8080:80
+    #note that for drupal, volumes are specified for modules, profiles, themes, and sites which should be the case according to the community 
+    volumes:
+      - drupal-modules:/var/www/html/modules
+      - drupal-profiles:/var/www/html/profiles
+      - drupal-themes:/var/www/html/themes
+      - drupal-sites:/var/www/html/sites
+    #clean up required
+    restart: always
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=pass
+    #clean up required
+    restart: always
+#volumes also need to declared by name here, note that indentation is in line with services
+volumes:
+  drupal-modules:
+  drupal-profiles:
+  drupal-themes:
+  drupal-sites:
+
+
+
+
